@@ -1,3 +1,41 @@
+# Abstract:
+- The project built is a Flashcards game playable through the command line, the implementations included range from card creation, deck management, game rounds, and correctness evaluation.
+
+## Installation:
+- The game logic can be found here https://github.com/baileyjarvis2814/flashcards-game
+- Copy the SSH repository URL git@github.com:baileyjarvis2814/flashcards-game.git
+- Open terminal and 'cd' into the directory you wish to clone the code into
+- Clone the repository by submitting git clone git@github.com:baileyjarvis2814/flashcards-game.git
+- Once cloned, the game is played via the command line. While in terminal and in the game directory, run 'node index.js' and play the game by way of the up and down arrow buttons, and the return(enter) key.
+- The game will play to 10 cards and then cease with a visible score of how many questions the player answered correctly.
+
+### Preview of App:
+https://i.ibb.co/Ycpy1Nf/Screenshot-2024-05-09-at-7-40-17-PM.png
+
+### Context:
+This project was assigned on Tuesday 7 and completed on Thursday May 9th as per the 2403 Front-End engineering cohort at Turing School of Software and Design.
+ 
+### Contributors:
+Jarvis Bailey: https://github.com/baileyjarvis2814
+
+### Learning Goals:
+The learning goals of this project were to 
+- Develop a deeper understanding of iterator methods
+- Reduce the risk of being too attached to one iterator method OR avoiding an iterator method
+- Compare and contrast iterator methods by using different iterators to achieve the same output
+### Wins + Challenges:
+Win 1. I learned how to better modulate my tests to focus on testing one thing at a time and not several things at once. Leading to better error handling and debugging.
+
+Win 2. I've refactored my functions to test for more specific outcomes rather than only the starting parameters(i.e. testing for an object to have properties instead of testing the specific properties of the returned object.
+
+Win 3. I managed to timebox myself better on this project in ways such as devoting more time to testing instead of jumping straight to functionality.
+
+Loss 1. I had a bit of trouble getting the round object actually being created. This led to some issues concerning the testing as nothing was being generated to console log.
+
+Loss 2. I also had an issue with the functionality of the game when it came to evaluating the player guess. This required some backtracking, albeit minor this time. This is definitely not something I want to repeat.
+
+Loss 3. I was not at all atomic with my commits or project boarding. Yet another product of poor timeboxing. A bad habit I'm still working on improving.
+
 # FlashCards Starter Kit
 
 ## Fork This Repo
