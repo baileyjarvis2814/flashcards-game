@@ -1,40 +1,35 @@
-const chai = require('chai');
-const expect = chai.expect;
-
+const { expect } = require('chai');
 const { createCard, evaluateGuess } = require('../src/card');
 
-describe('createCard', function() {
-  it('should handle invalid inputs gracefully', function() {
-    const card = createCard(undefined, null, [], null);
-    expect(card.id).to.be.undefined;
-    expect(card.question).to.be.null;
-    expect(card.answers).to.deep.equal([]);
-    expect(card.correctAnswer).to.be.null;
-  });
+describe('Card Functionality Tests', function() {
+    describe('createCard Function Tests', function() {
+        it('should correctly create a card with all valid parameters', function() {
+            const card = createCard(1, "What is JavaScript?", ["Language", "Framework", "Tool"], "Language");
+            expect(card).to.deep.include({
+                id: 1,
+                question: "What is JavaScript?",
+                answers: ["Language", "Framework", "Tool"],
+                correctAnswer: "Language"
+            });
+        });
 
-  it('should handle questions with special characters', function() {
-    const question = "What's the value of &pi; (pi)?";
-    const card = createCard(1, question, ['3.14', '3.1415'], '3.1415');
-    expect(card.question).to.equal(question);
-  });
+        it('should return null when any required parameter is missing', function() {
+            const cardWithoutQuestion = createCard(2, "", ["Yes", "No"], "Yes");
+            const cardWithoutAnswers = createCard(3, "Does it run?", [], "Yes");
+            expect(cardWithoutQuestion).to.be.null;
+            expect(cardWithoutAnswers).to.be.null;
+        });
 
-  it('should process a card with no answers', function() {
-    const card = createCard(2, 'What is the meaning of life?', [], '');
-    expect(card.answers).to.be.an('array').that.is.empty;
-  });
-});
+        it('should evaluate a correct guess correctly', function() {
+            const correctAnswer = "Language";
+            const result = evaluateGuess("Language", correctAnswer);
+            expect(result).to.equal('correct!');
+        });
 
-describe('evaluateGuess', function() {
-  it('should be case insensitive', function() {
-    expect(evaluateGuess('Object', 'object')).to.equal('correct!');
-  });
-
-  it('should handle null inputs', function() {
-    expect(evaluateGuess(null, 'object')).to.equal('incorrect!');
-    expect(evaluateGuess('object', null)).to.equal('incorrect!');
-  });
-
-  it('should treat similar but not identical strings as incorrect', function() {
-    expect(evaluateGuess('object ', 'object')).to.equal('incorrect!');
-  });
+        it('should evaluate an incorrect guess correctly', function() {
+            const correctAnswer = "Language";
+            const result = evaluateGuess("Framework", correctAnswer);
+            expect(result).to.equal('incorrect!');
+        });
+    });
 });

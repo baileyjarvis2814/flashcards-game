@@ -1,3 +1,5 @@
-// This is where your project starts.
+const game = require('./src/game.js');
 
-console.log('Your project is running...'); 
+game.start();  // This should now work correctly
+
+console.log('Your project is running...');

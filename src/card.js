@@ -1,18 +1,22 @@
 function createCard(id, question, answers, correctAnswer) {
-    return {
-      id: id,
-      question: question,
-      answers: answers,
-      correctAnswer: correctAnswer
-    };
-  };
-
-  function evaluateGuess(guess, correctAnswer) {
-    // Convert both guess and correctAnswer to lower case before comparison
-    if (typeof guess === 'string' && typeof correctAnswer === 'string') {
-      return guess.toLowerCase() === correctAnswer.toLowerCase() ? 'correct!' : 'incorrect!';
+    if (!id || !question || !answers || answers.length === 0 || !correctAnswer) {
+        console.error("Invalid card parameters", { id, question, answers, correctAnswer });
+        return null;
     }
-    return 'incorrect!';
-  };
-  
-  module.exports = {createCard, evaluateGuess};
+    return {
+        id,
+        question,
+        answers,
+        correctAnswer
+    };
+}
+
+function evaluateGuess(guess, correctAnswer) {
+    if (guess === correctAnswer) {
+        return 'correct!';
+    } else {
+        return 'incorrect!';
+    }
+}
+
+module.exports = {createCard, evaluateGuess};
